@@ -1,0 +1,16 @@
+[user]
+  name = jgroselle
+  email = julien.groselle@gmail.com
+[push]
+  default = simple
+[core]
+  editor = vim
+[alias]
+  changelog = log --pretty='format:  * %s (%an)'
+  lg = log --graph --abbrev-commit --decorate --date=iso --format=format:'%C(yellow)%h%C(reset) - %C(green)(%ad)%C(reset) %C(white)%s%C(reset) %C(blue)[%an]%C(reset)%C(red)%d%C(reset)' --all
+  merge-log = merge --log=100 --no-ff --edit
+  uncommit = reset --soft HEAD~1
+  unmerge = reset --merge ORIG_HEAD
+  st = status
+  diff-chars = diff --color-words --word-diff-regex=.
+  diff-words = diff --color-words
