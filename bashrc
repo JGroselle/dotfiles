@@ -49,11 +49,24 @@ export GIT_PS1_SHOWUPSTREAM='verbose name'
 # PS1
 PS1='\[\e[0;33m\][\t] \[\e[0;32m\]\u@\H \[\e[0;33m\]\w \[\e[0;35m\]$(__git_ps1 "(%s)")\n\[\e[0;33m\]$\[\e[0m\] '
 
+# Color man
+man() {
+    env \
+    LESS_TERMCAP_mb=$'\e[01;31m' \
+    LESS_TERMCAP_md=$'\e[01;31m' \
+    LESS_TERMCAP_me=$'\e[0m' \
+    LESS_TERMCAP_se=$'\e[0m' \
+    LESS_TERMCAP_so=$'\e[01;44;33m' \
+    LESS_TERMCAP_ue=$'\e[0m' \
+    LESS_TERMCAP_us=$'\e[01;32m' \
+    man "$@"
+}
+
 # ssh-agent
 SSH_ENV="${HOME}/.ssh/environment"
 SSH_KEY="${HOME}/.ssh/id_rsa"
 ssh-agent | sed 's/^echo/#echo/' | dd of="${SSH_ENV}" 2> /dev/null
-if [ -e "${SSH_ENV}" ] ; then 
+if [ -e "${SSH_ENV}" ] ; then
     chmod 600 "${SSH_ENV}"
     # shellcheck source=${SSH_ENV}
     # shellcheck disable=SC1091
