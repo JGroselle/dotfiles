@@ -34,8 +34,10 @@ alias :Q=' exit'
 alias :x=' exit'
 alias cd..='cd ..'
 
-# Auto cd
-shopt -s autocd
+# shell optional behavior
+for option in autocd cdspell histappend ; do
+  shopt -s "$option"
+done
 
 # Git
 # shellcheck disable=SC1091
